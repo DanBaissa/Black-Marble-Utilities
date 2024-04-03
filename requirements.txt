@@ -1,0 +1,11 @@
+geopandas
+matplotlib
+numpy
+pandas
+rasterio
+rasterstats
+shapely
+h5py
+requests
+scikit-image
+astropy
