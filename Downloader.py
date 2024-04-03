@@ -8,7 +8,6 @@ import sys
 import urllib.request
 from datetime import datetime, timedelta
 from tkinter import filedialog
-
 import geopandas as gpd
 import h5py
 import rasterio
