@@ -47,7 +47,7 @@ def main():
 
     # Fetch the bounding box for the specified country
     bounding_box = get_bounding_box(selected_country, shapefile)
-    collection_id = "C1898025206-LAADS"  # Example collection ID
+    collection_id = "C1898025206-LAADS"  # Example_Data collection ID
 
     # Search for URLs to download
     urls = search_nasa_cmr(collection_id, start_date, end_date, bounding_box)
