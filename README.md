@@ -3,6 +3,9 @@
 
 ## [Introduction](#introduction)
 The `Black-Marble-Utilities` project is a collection of Python scripts designed for researchers and GIS professionals working with NASA's VIIRS Black Marble dataset. This dataset provides nightly Earth observations, offering insights into human activities and natural phenomena. The toolkit simplifies data acquisition, preprocessing, exposure adjustment, and geographic targeting, facilitating the integration of Black Marble data into geospatial analyses.
+
+For more information about the VIIRS Black Marble dataset, visit the [NASA Black Marble website](https://blackmarble.gsfc.nasa.gov/).
+
 ________________________________________
 
 # [Table of Contents](#table-of-contents)
