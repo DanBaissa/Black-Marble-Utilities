@@ -3,6 +3,36 @@
 
 ## [Introduction](#introduction)
 The `Black-Marble-Utilities` project is a collection of Python scripts designed for researchers and GIS professionals working with NASA's VIIRS Black Marble dataset. This dataset provides nightly Earth observations, offering insights into human activities and natural phenomena. The toolkit simplifies data acquisition, preprocessing, exposure adjustment, and geographic targeting, facilitating the integration of Black Marble data into geospatial analyses.
+________________________________________
+
+# Table of Contents
+1. [Introduction](#introduction)
+2. [Features](#features)
+   - [Downloader](#downloader)
+   - [Exposure Matching](#exposure-matching)
+   - [Setup](#setup)
+   - [Raster Stacking](#raster-stacking)
+   - [Data Binning](#data-binning)
+   - [Country Cropping](#country-cropping)
+3. [Prerequisites](#prerequisites)
+4. [Installation](#installation)
+5. [Usage](#usage)
+   - [Downloader Usage](#downloader-usage)
+   - [Exposure Matching Usage](#exposure-matching-usage)
+   - [Raster Stacking Usage](#raster-stacking-usage)
+   - [Data Binning Usage](#data-binning-usage)
+   - [Country Cropping Usage](#country-cropping-usage)
+6. [Example Usage](#example-usage)
+   - [Step 1: Data Downloading](#step-1-data-downloading)
+   - [Step 2: Country-Specific Cropping](#step-2-country-specific-cropping)
+   - [Step 3: Exposure Matching](#step-3-exposure-matching)
+   - [Step 4: Raster Stacking](#step-4-raster-stacking)
+   - [Step 5: Data Binning](#step-5-data-binning)
+7. [Contributing](#contributing)
+8. [License](#license)
+9. [Acknowledgements](#acknowledgements)
+________________________________________
+
 
 ## [Features](#Features)
 - [**Downloader**:](#downloader) Automates downloading VIIRS Black Marble data for specified dates and countries.
@@ -10,6 +40,7 @@ The `Black-Marble-Utilities` project is a collection of Python scripts designed 
 - [**Raster Stacking**:](#raster-stacking)  Uses astrophotography techniques to stack raster images, enhancing detail and reducing noise.
 - [**Data Binning**:](#data-binning-script) Facilitates spatial analysis by cropping to specific countries and binning data.
 - [**Country Cropping**:](#country-cropping-script) Enables focused analysis by cropping raster images to precise country boundaries.
+________________________________________
 
 ## [Prerequisites](#Prerequisites)
 You should have Python 3.x installed. This toolkit relies on several libraries, such as Rasterio, GeoPandas, NumPy, and Matplotlib.
@@ -27,6 +58,7 @@ You should have Python 3.x installed. This toolkit relies on several libraries, 
      ```bash
      pip install -r requirements.txt
      ```
+________________________________________
 
 ## [Usage](#usage)
 
@@ -63,6 +95,7 @@ python Downloader.py --start-date YYYY-MM-DD --end-date YYYY-MM-DD --country "Co
 - `--token YOUR_API_TOKEN`: Your personal API token for accessing NASA's data repositories. This token is typically obtained by registering on NASA's Earthdata or similar platforms.
 
 
+________________________________________
 
 ### [Exposure Matching](#exposure-matching)
 
@@ -86,6 +119,7 @@ python Exposure_matching.py --source-directory ./source_images --reference-path 
 - `--source-directory ./source_images`: The path to the directory containing the source GeoTIFF images whose exposure you want to adjust. The script will process all GeoTIFF files within this directory.
 - `--reference-path ./reference_image.tif`: The path to the GeoTIFF image that will serve as the exposure reference. This image should ideally represent the desired visual appearance in terms of lighting and contrast.
 - `--output-directory ./matched_images`: The path to the directory where the exposure-matched images will be saved. If this directory does not exist, the script will create it.
+________________________________________
 
 ### [Country Cropping Script](#country-cropping-script) 
 
@@ -112,6 +146,7 @@ python Country_cropper.py --raster-dir ./rasters --output-dir ./cropped_rasters 
 - `--output-dir ./cropped_rasters`: The directory where the cropped raster images will be saved. If this directory doesn't exist, the script will create it.
 - `--country "Country Name"`: The name of the country to which the raster images will be cropped. This name should match an entry within the used country boundaries dataset to ensure accurate cropping.
 - `--view-rasters`: This optional flag, when included, instructs the script to display the cropped images upon processing. This is useful for immediate visual verification of the cropping operation.
+________________________________________
 
 
 ### [Raster Stacking](#raster-stacking) 
@@ -151,6 +186,7 @@ In these commands:
 - `--sigma-stacking`: Enables sigma clipping stacking.
 - `--iters X`: Defines the number of iterations for the sigma clipping process. More iterations can improve outlier management but increase processing time. For example --iters 5 performs a maximum of 5 iterations of the algorthm per pixel. 
 
+________________________________________
 
 ### [Data Binning Script](#data-binning-script)
 
@@ -179,14 +215,59 @@ python Binner.py --country "Country Name" --raster-dir ./rasters --csv-path ./da
 - `--output-dir ./binned_data`: The directory where the binned data (and any processed CSV data) will be saved.
 - `--bin-size 10`: The size of the bins in kilometers, determining the resolution of the spatial summarization.
 
+________________________________________
+
+## [Example Usage: Analyzing VIIRS Black Marble Data for the UAE](#example-usage)
+
+This example demonstrates how to use the `Black-Marble-Utilities` toolkit to download, process, and analyze VIIRS Black Marble data for the United Arab Emirates (UAE) over a two-day period. The workflow includes cropping to the UAE's geographical boundaries, matching exposure across images, stacking to reduce noise, and finally binning the data for analysis.
+
+### [Step 1: Data Downloading](#step-1-data-downloading)
+First, we will download two days' worth of VIIRS Black Marble data for the UAE. Ensure you have your NASA API token ready for this step.
+
+Remember to replace YOUR_API_TOKEN with your actual NASA API token.
+```bash
+python Downloader.py --start-date 2022-01-01 --end-date 2022-01-02 --country "United Arab Emirates" --destination-folder ./Example_Data --token YOUR_API_TOKEN
+```
+
+### [Step 2: Country-Specific Cropping](#step-2-country-specific-cropping)
+After downloading the data, we'll crop the images to focus on the UAE specifically.
+
+```bash
+python Country_cropper.py --raster-dir ./Example_Data --output-dir ./Example_Data/Cropped --country "United Arab Emirates"
+```
+
+### [Step 3: Exposure Matching](#step-3-exposure-matching)
+Next, we will standardize the exposure across the cropped images. This step assumes you have a reference image with the desired exposure settings. Replace `./reference_image.tif` with the path to your reference image.
+
+Remember to replace ./reference_image.tif with the path to your chosen reference image. 
+```bash
+python Exposure_matching.py --source-directory ./Example_Data/Cropped --reference-path ./reference_image.tif --output-directory ./Example_Data/Exposure_Matched
+
+python Exposure_matching.py --source-directory ./Example_Data/Cropped --reference-path "./Example_Data/Cropped/United Arab Emirates_2022001.tif" --output-directory ./Example_Data/Exposure_Matched
+```
+
+### [Step 4: Raster Stacking](#step-4-raster-stacking)
+To reduce noise and enhance signal clarity, we will stack the exposure-matched images using both mean and sigma clipping stacking.
+
+```bash
+python Stacker.py --folder-path ./Example_Data/Exposure_Matched --sigma-value 2 --mean-stacking --sigma-stacking --iters 5 --threshold-value 5000
+```
+
+### [Step 5: Data Binning](#step-5-data-binning)
+Finally, we will bin the stacked data for analysis. This step organizes the data into a grid, summarizing the information within each bin. You can adjust the `--bin-size` as needed for your analysis.
+
+```bash
+python Binner.py --country "United Arab Emirates" --raster-dir ./Example_Data/Stacked --output-dir ./Example_Data/Binned --bin-size 10
+```
 
 
-## Contributing
+
+## [Contributing](#contributing)
 Contributions are welcome. Please fork the repository, create a feature branch, and submit a pull request.
 
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+## [License](#license)
+This project is licensed under the MIT License.
 
-## Acknowledgements
+## [Acknowledgements](#acknowledgements)
 - NASA for providing the VIIRS Black Marble dataset.
 - Open-source Python libraries that support geospatial data processing.
