@@ -5,8 +5,8 @@
 The `Black-Marble-Utilities` project is a collection of Python scripts designed for researchers and GIS professionals working with NASA's VIIRS Black Marble dataset. This dataset provides nightly Earth observations, offering insights into human activities and natural phenomena. The toolkit simplifies data acquisition, preprocessing, exposure adjustment, and geographic targeting, facilitating the integration of Black Marble data into geospatial analyses.
 
 ## [Features](#Features)
-- [**Downloader**:](#downloader) Automates downloading VIIRS Black Marble data for specified dates and regions.
-- [**Exposure Matching**:](#exposure-matching) Standardizes the visual exposure of satellite imagery across datasets.
+- [**Downloader**:](#downloader) Automates downloading VIIRS Black Marble data for specified dates and countries.
+- [**Exposure Matching**:](#exposure-matching) Standardizes the visual exposure of satellite imagery across rasters.
 - [**Raster Stacking**:](#raster-stacking)  Uses astrophotography techniques to stack raster images, enhancing detail and reducing noise.
 - [**Data Binning**:](#data-binning-script) Facilitates spatial analysis by cropping to specific countries and binning data.
 - [**Country Cropping**:](#country-cropping-script) Enables focused analysis by cropping raster images to precise country boundaries.
