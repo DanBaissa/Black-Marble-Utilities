@@ -5,11 +5,11 @@
 The `Black-Marble-Utilities` project is a collection of Python scripts designed for researchers and GIS professionals working with NASA's VIIRS Black Marble dataset. This dataset provides nightly Earth observations, offering insights into human activities and natural phenomena. The toolkit simplifies data acquisition, preprocessing, exposure adjustment, and geographic targeting, facilitating the integration of Black Marble data into geospatial analyses.
 
 ## [Features](#Features)
-- [**Downloader**](#Downloader): Automates downloading VIIRS Black Marble data for specified dates and regions.
-- **Exposure Matching**: Standardizes the visual exposure of satellite imagery across datasets.
-- **Raster Stacking**: Uses astrophotography techniques to stack raster images, enhancing detail and reducing noise.
-- **Data Binning**: Facilitates spatial analysis by cropping to specific countries and binning data.
-- **Country Cropping**: Enables focused analysis by cropping raster images to precise country boundaries.
+- [**Downloader**:](#Downloader) Automates downloading VIIRS Black Marble data for specified dates and regions.
+- [**Exposure Matching**:](#Exposure Matching) Standardizes the visual exposure of satellite imagery across datasets.
+- [**Raster Stacking**:](#Raster Stacking)  Uses astrophotography techniques to stack raster images, enhancing detail and reducing noise.
+- [**Data Binning**:](#Data Binning Script) Facilitates spatial analysis by cropping to specific countries and binning data.
+- [**Country Cropping**:](#Country Cropping Script) Enables focused analysis by cropping raster images to precise country boundaries.
 
 ## [Prerequisites](#Prerequisites)
 You should have Python 3.x installed. This toolkit relies on several libraries, such as Rasterio, GeoPandas, NumPy, and Matplotlib.
@@ -64,7 +64,7 @@ python Downloader.py --start-date YYYY-MM-DD --end-date YYYY-MM-DD --country "Co
 
 
 
-### [Exposure Matching](Exposure Matching)
+### [Exposure Matching](#Exposure Matching)
 
 The `Exposure Matching` script is a component of the `Black-Marble-Utilities` toolkit, designed to ensure visual consistency across a series of GeoTIFF images by matching their exposure levels to that of a reference image. This functionality is particularly useful in projects involving time-series analysis of satellite imagery, where differences in lighting conditions, sensor settings, or atmospheric conditions can result in varying exposure levels across images, potentially skewing analysis or visual interpretation.
 
