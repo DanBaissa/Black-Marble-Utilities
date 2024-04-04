@@ -7,7 +7,6 @@ The `Black-Marble-Utilities` project is a collection of Python scripts designed 
 For more information about the VIIRS Black Marble dataset, visit the [NASA Black Marble website](https://blackmarble.gsfc.nasa.gov/).
 
 ________________________________________
-________________________________________
 
 # [Table of Contents](#table-of-contents)
 1. [Introduction](#introduction)
@@ -30,7 +29,7 @@ ________________________________________
 8. [License](#license)
 9. [Acknowledgements](#acknowledgements)
 ________________________________________
-________________________________________
+
 
 ## [Features](#Features)
 - [**Downloader**:](#downloader) Automates downloading VIIRS Black Marble data for specified dates and countries.
