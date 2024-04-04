@@ -6,10 +6,10 @@ The `Black-Marble-Utilities` project is a collection of Python scripts designed 
 
 ## [Features](#Features)
 - [**Downloader**:](#Downloader) Automates downloading VIIRS Black Marble data for specified dates and regions.
-- [**Exposure Matching**:](#Exposure Matching) Standardizes the visual exposure of satellite imagery across datasets.
-- [**Raster Stacking**:](#Raster Stacking)  Uses astrophotography techniques to stack raster images, enhancing detail and reducing noise.
-- [**Data Binning**:](#Data Binning Script) Facilitates spatial analysis by cropping to specific countries and binning data.
-- [**Country Cropping**:](#Country Cropping Script) Enables focused analysis by cropping raster images to precise country boundaries.
+- [**Exposure Matching**:](#ExposureMatching) Standardizes the visual exposure of satellite imagery across datasets.
+- [**Raster Stacking**:](#RasterStacking)  Uses astrophotography techniques to stack raster images, enhancing detail and reducing noise.
+- [**Data Binning**:](#DataBinningScript) Facilitates spatial analysis by cropping to specific countries and binning data.
+- [**Country Cropping**:](#CountryCroppingScript) Enables focused analysis by cropping raster images to precise country boundaries.
 
 ## [Prerequisites](#Prerequisites)
 You should have Python 3.x installed. This toolkit relies on several libraries, such as Rasterio, GeoPandas, NumPy, and Matplotlib.
@@ -64,7 +64,7 @@ python Downloader.py --start-date YYYY-MM-DD --end-date YYYY-MM-DD --country "Co
 
 
 
-### [Exposure Matching](#Exposure Matching)
+### [Exposure Matching](#ExposureMatching)
 
 The `Exposure Matching` script is a component of the `Black-Marble-Utilities` toolkit, designed to ensure visual consistency across a series of GeoTIFF images by matching their exposure levels to that of a reference image. This functionality is particularly useful in projects involving time-series analysis of satellite imagery, where differences in lighting conditions, sensor settings, or atmospheric conditions can result in varying exposure levels across images, potentially skewing analysis or visual interpretation.
 
@@ -87,7 +87,7 @@ python Exposure_matching.py --source-directory ./source_images --reference-path 
 - `--reference-path ./reference_image.tif`: The path to the GeoTIFF image that will serve as the exposure reference. This image should ideally represent the desired visual appearance in terms of lighting and contrast.
 - `--output-directory ./matched_images`: The path to the directory where the exposure-matched images will be saved. If this directory does not exist, the script will create it.
 
-### [Country Cropping Script](#Country Cropping Script) 
+### [Country Cropping Script](#CountryCroppingScript) 
 
 The `Country Cropping` script is designed to tailor raster datasets for country-specific analyses. By cropping raster images to the precise geographical boundaries of a chosen country, this tool helps in focusing the analysis on relevant areas, thereby optimizing data handling and processing efforts for tasks that require geographical specificity.
 
@@ -114,7 +114,7 @@ python Country_cropper.py --raster-dir ./rasters --output-dir ./cropped_rasters 
 - `--view-rasters`: This optional flag, when included, instructs the script to display the cropped images upon processing. This is useful for immediate visual verification of the cropping operation.
 
 
-### [Raster Stacking](#Raster Stacking) 
+### [Raster Stacking](#RasterStacking) 
 The `Raster Stacking` script within the `Black-Marble-Utilities` toolkit is designed to enhance the quality of raster images by reducing noise and improving the signal-to-noise ratio. This script employs two primary techniques: mean stacking and sigma clipping stacking, which can be used individually or combined to process a series of GeoTIFF images. Such techniques are particularly beneficial in astrophotography, remote sensing, and time-series satellite image analysis, where multiple observations of the same area can be combined to mitigate noise and emphasize consistent patterns.
 
 #### How It Works
@@ -152,7 +152,7 @@ In these commands:
 - `--iters X`: Defines the number of iterations for the sigma clipping process. More iterations can improve outlier management but increase processing time. For example --iters 5 performs a maximum of 5 iterations of the algorthm per pixel. 
 
 
-### [Data Binning Script](#Data Binning Script)
+### [Data Binning Script](#DataBinningScript)
 
 The `Data Binning` script is a specialized tool within the `Black-Marble-Utilities` collection designed to perform spatial analysis by segmenting raster data into uniform, grid-shaped bins. This process is particularly useful for summarizing and analyzing spatial data within specified geographical areas, such as countries. Moreover, this script offers the unique capability to integrate additional data from CSV files into the binning process, allowing for richer, multidimensional analyses.
 
