@@ -85,9 +85,9 @@ urbanization and power outages to monitoring natural disasters and ecological ch
 
 #### How It Works
 The `Downloader` script interfaces with NASA's data repositories to fetch VIIRS Black Marble imagery based on 
-user-specified parameters. It requires the user to define a date range for the desired data, the geographical region of
-interest (typically specified by the country name), and the destination folder where the downloaded data should be 
-stored. Additionally, since access to NASA's data repositories often requires authentication, the script also requires
+user-specified parameters. It requires the user to define a date range for the desired data, the country of
+interest, and the destination folder where the downloaded data should be 
+stored. Additionally, since access to NASA's data repositories require authentication, the script also requires
 an API token.
 
 #### Key Features
@@ -121,8 +121,8 @@ ________________________________________
 
 ### [Exposure Matching](#exposure-matching)
 
-The `Exposure Matching` script is a component of the `Black-Marble-Utilities` toolkit, designed to ensure visual
-consistency across a series of GeoTIFF images by matching their exposure levels to that of a reference image. This 
+The `Exposure Matching` script is a component of the `Black-Marble-Utilities` toolkit, designed to ensure consistency 
+across a series of GeoTIFF images by matching their exposure levels to that of a reference image. This 
 functionality is particularly useful in projects involving time-series analysis of satellite imagery, where differences
 in lighting conditions, sensor settings, or atmospheric conditions can result in varying exposure levels across images,
 potentially skewing analysis or visual interpretation.
@@ -130,14 +130,12 @@ potentially skewing analysis or visual interpretation.
 #### How It Works
 The script utilizes image processing techniques to analyze the histogram of pixel values in both the source and 
 reference images. It then applies transformations to the source images to align their histograms with that of the 
-reference image, effectively standardizing exposure across the dataset. This process enhances the comparability of 
-images taken under different conditions by normalizing their visual appearance.
+reference image, effectively standardizing exposure across the dataset.
 
 #### Key Features
 - **Reference-Based Adjustment**: By using a selected reference image, the script ensures that all adjustments are 
 consistent and centered around a chosen standard, maintaining a uniform look and feel across the image set.
-- **Batch Processing**: The script can process an entire directory of GeoTIFF images in one go, automating what would 
-otherwise be a tedious and time-consuming task if done manually.
+- **Batch Processing**: The script can process an entire directory of GeoTIFF images in one go.
 - **Flexibility in Usage**: The script can be used as a standalone tool or integrated into larger data processing 
 workflows, making it a versatile solution for exposure matching needs.
 
@@ -154,23 +152,19 @@ python Exposure_matching.py --source-directory ./source_images --reference-path 
 you want to adjust. The script will process all GeoTIFF files within this directory.
 - `--reference-path ./reference_image.tif`: The path to the GeoTIFF image that will serve as the exposure reference. 
 This image should ideally represent the desired visual appearance in terms of lighting and contrast.
-- `--output-directory ./matched_images`: The path to the directory where the exposure-matched images will be saved. If 
-this directory does not exist, the script will create it.
+- `--output-directory ./matched_images`: The path to the directory where the exposure-matched images will be saved. 
 
 [↩ Back to Top](#table-of-contents)
 ________________________________________
 
 ### [Country Cropping Script](#country-cropping-script) 
 
-The `Country Cropping` script is designed to tailor raster datasets for country-specific analyses. By cropping raster 
-images to the precise geographical boundaries of a chosen country, this tool helps in focusing the analysis on relevant
-areas, thereby optimizing data handling and processing efforts for tasks that require geographical specificity.
+The `Country Cropping` script is designed to tailor raster datasets for country-specific analyses. 
 
 #### How It Works
-- **Geospatial Cropping**: Leveraging country boundary data (typically from a shapefile or similar geospatial vector 
-format), the script trims raster images so that only the portions falling within the selected country's borders are 
-retained. This operation reduces the size of the raster files and excludes irrelevant data, making subsequent analyses 
-more efficient and focused.
+- **Geospatial Cropping**: Leveraging country boundary data, the script trims raster images so that only the portions 
+falling within the selected country's borders are retained. This operation reduces the size of the raster files and 
+excludes irrelevant data, making subsequent analyses more efficient and focused.
 - **Batch Processing**: The script processes all raster images within a specified directory, applying the cropping 
 operation to each file. This batch processing capability significantly reduces the manual effort required for large 
 datasets.
@@ -183,8 +177,6 @@ the output aligns with the user's expectations.
 tasks more manageable and relevant.
 - **Improved Data Management**: Cropping reduces the file size of raster datasets, facilitating easier storage, 
 handling, and sharing.
-- **Versatility**: The script supports a wide range of applications, from environmental monitoring to urban planning, 
-by allowing users to concentrate on areas of interest.
 
 #### Usage Instructions
 To utilize the `Country Cropping` script, specify the directory containing the raster files to be cropped, the output
@@ -269,7 +261,7 @@ ________________________________________
 
 The `Data Binning` script is a specialized tool within the `Black-Marble-Utilities` collection designed to perform 
 spatial analysis by segmenting raster data into uniform, grid-shaped bins. This process is particularly useful for 
-summarizing and analyzing spatial data within specified geographical areas, such as countries. Moreover, this script 
+summarizing and analyzing spatial data within specified countries. Moreover, this script 
 offers the unique capability to integrate additional data from CSV files into the binning process, allowing for richer, 
 multidimensional analyses.
 
@@ -285,7 +277,7 @@ geographic coordinates, allowing for combined analyses of raster and tabular dat
 #### Key Features
 - **Focused Analysis**: By cropping data to a specific country, the script allows users to concentrate their analysis 
 on areas of interest, improving both efficiency and relevance.
-- **Spatial Summarization**: The binning process enhances the Signal-to-Noise ratio of the data and facilitates GIS
+- **Spatial Superpixels**: The binning process enhances the Signal-to-Noise ratio of the data and facilitates GIS
 math on the superpixels.
 
 #### Usage Instructions
