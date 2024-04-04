@@ -42,7 +42,7 @@ data.
 country boundaries.
 ________________________________________
 
-## Prerequisites
+## [Prerequisites](#prerequisites)
 
 - **Python**: You should have Python 3.x installed on your system. The scripts in this toolkit are compatible with 
 Python 3.x versions.
