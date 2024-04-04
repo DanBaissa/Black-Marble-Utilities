@@ -28,7 +28,7 @@ You should have Python 3.x installed. This toolkit relies on several libraries, 
      pip install -r requirements.txt
      ```
 
-## [Usage](#Usage)
+## [Usage](#usage)
 
 Detailed usage instructions for each script are provided in their respective sections below.
 
